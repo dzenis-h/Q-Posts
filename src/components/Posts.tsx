@@ -48,10 +48,12 @@ const Posts: React.FC = () => {
   return (
     <div>
       {posts.map((post) => (
-        <div key={post.id}>
-          <Link to={`/posts/${post.id}`}>
-            <h2>{post.title}</h2>
-          </Link>
+        <div key={post.id} className="card">
+          <div className="card-title">
+            <Link to={`/posts/${post.id}`}>
+              <h2>{post.title}</h2>
+            </Link>
+          </div>
           <p>By {post.user?.name}</p>
         </div>
       ))}
