@@ -43,3 +43,24 @@ body {
   text-align: center;
   font-family: "Lato" Verdana, Geneva, Tahoma, sans-serif;
 }
+
+li,
+a {
+  text-decoration: none;
+}
+
+.back-btn {
+  display: flex;
+  transform: translateY(-29px) translateX(35px);
+  font-size: 1.5rem;
+  color: #000000;
+  margin-right: 0.2rem;
+}
+
+h2 {
+  color: #bfdd55;
+}
+
+p {
+  font-weight: bold;
+}

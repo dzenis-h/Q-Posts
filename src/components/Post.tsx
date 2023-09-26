@@ -1,9 +1,11 @@
 // Post.tsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Comments from "./Comments";
 import Logger from "../utils/Logger";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 interface User {
   id: number;
@@ -43,8 +45,16 @@ const Post: React.FC = () => {
 
   if (!post) return null;
 
-  return ( 
+  return (
     <div>
+      <Link to="/" className="back-btn">
+        <span className="back-btn-dark"> </span>{" "}
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          beatFade
+          style={{ color: "#ccdb94", paddingLeft: ".5rem" }}
+        />{" "}
+      </Link>
       <h2>{post.title}</h2>
       <p>By {post.user?.name}</p>
       <p>{post.body}</p>
