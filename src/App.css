@@ -76,7 +76,7 @@ html {
 
 html,
 body {
-  height: 100vh;
+  height: 95vh;
   min-height: 100%;
   font-family: Lato, sans-serif;
 }
@@ -184,22 +184,11 @@ main {
   will-change: transform, opacity;
 }
 
-#background-back {
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/mountain-02.jpg);
-  background-position: left center;
-  opacity: 0;
-  visibility: hidden;
-}
-
-#background-front {
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/mountain-01.jpg);
-  background-position: left center;
-}
-
 .card {
   padding: 16px;
   margin: 24px;
-  border-radius: 2px;
+  margin-top: 3rem;
+  border-radius: 3px;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.87);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),

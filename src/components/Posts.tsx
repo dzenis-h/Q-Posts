@@ -18,35 +18,53 @@ interface Post {
 }
 
 const Posts: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
 
-  useEffect(() => {
-    Logger("Posts");
-    axios
-      .get<Post[]>("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => {
-        const posts = response.data;
-        const usersPromises = posts.map((post) =>
-          axios.get<User>(
-            `https://jsonplaceholder.typicode.com/users/${post.userId}`
-          )
-        );
-        return Promise.all([posts, ...usersPromises]);
-      })
-      .then(([posts, ...usersResponses]) => {
-        const postsWithUsers = posts.map((post, index) => ({
-          ...post,
-          user: usersResponses[index].data,
-        }));
-        setPosts(postsWithUsers);
-      })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
-      });
-  }, []);
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (searchQuery === "") {
+      alert("Please enter a valid name!");
+    }
+    if (searchQuery) {
+      axios
+        .get<User[]>("https://jsonplaceholder.typicode.com/users")
+        .then((response) => {
+          const users = response.data.filter((user) =>
+            user.name.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+          const postsPromises = users.map((user) =>
+            axios
+              .get<Post[]>(
+                `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`
+              )
+              .then((response) =>
+                response.data.map((post) => ({ ...post, user }))
+              )
+          );
+          return Promise.all(postsPromises);
+        })
+        .then((postsArrays) => {
+          setPosts(postsArrays.flat());
+        });
+    } else {
+      setPosts([]);
+    }
+  };
 
   return (
-    <div>
+    <div style={{ maxHeight: "95vh" }}>
+      <Logger message="Posts" />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Search by user name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
+
       {posts.map((post) => (
         <div key={post.id} className="card">
           <div className="card-title">

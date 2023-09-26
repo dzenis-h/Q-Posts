@@ -25,7 +25,6 @@ const Post: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
 
   useEffect(() => {
-    Logger("Post");
     axios
       .get<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((response) => {
@@ -46,7 +45,8 @@ const Post: React.FC = () => {
   if (!post) return null;
 
   return (
-    <div>
+    <>
+      <Logger message="Post" />
       <Link to="/" className="back-btn">
         <span className="back-btn-dark"> </span>{" "}
         <FontAwesomeIcon
@@ -59,7 +59,7 @@ const Post: React.FC = () => {
       <p>By {post.user?.name}</p>
       <p>{post.body}</p>
       <Comments postId={post.id} />
-    </div>
+    </>
   );
 };
 

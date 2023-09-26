@@ -20,7 +20,6 @@ const Comments: React.FC<CommentsProps> = ({ postId }) => {
   // console.log(comments);
 
   useEffect(() => {
-    Logger("Comments");
     axios
       .get<Comment[]>(
         `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
@@ -35,6 +34,7 @@ const Comments: React.FC<CommentsProps> = ({ postId }) => {
 
   return (
     <>
+      <Logger message="Comments" />;
       {comments.map((comment) => (
         <blockquote key={comment.id} className="sunflower">
           <h3 className="centered">{comment.name}</h3>
