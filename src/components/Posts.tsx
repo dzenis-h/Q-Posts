@@ -33,6 +33,9 @@ const Posts: React.FC = () => {
           const users = response.data.filter((user) =>
             user.name.toLowerCase().includes(searchQuery.toLowerCase())
           );
+          if (users.length === 0) {
+            alert("Sorry, no users found. Try again.");
+          }
           const postsPromises = users.map((user) =>
             axios
               .get<Post[]>(
@@ -61,8 +64,8 @@ const Posts: React.FC = () => {
           placeholder="Search by user name"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          id="kutu"
         />
-        <button type="submit">Search</button>
       </form>
 
       {posts.map((post) => (

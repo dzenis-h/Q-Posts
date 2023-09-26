@@ -226,3 +226,37 @@ p {
   line-height: 1.6em;
   padding: 0 16px;
 }
+
+#kutu {
+  width: 10px;
+  height: 30px;
+  background-image: url("https://cdn0.iconfinder.com/data/icons/30-hardware-line-icons/64/Search-128.png");
+  background-size: 40px;
+  background-repeat: no-repeat;
+  outline: none;
+  font-size: 19px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  background-color: #d6d6d6;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-left: 50%;
+  margin-top: 280px;
+  transition-property: width, padding, box-shadow, cursor, margin,
+    background-color;
+  transition-duration: 0.6s;
+}
+#kutu:focus {
+  padding-left: 66px;
+  padding-right: 66px;
+  width: 350px;
+  cursor: text;
+  box-shadow: 0px 0px 15px 1px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
