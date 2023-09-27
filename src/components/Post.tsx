@@ -1,6 +1,5 @@
-// Post.tsx
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Comments from "./Comments";
 import Logger from "../utils/Logger";
@@ -25,21 +24,33 @@ const Post: React.FC = () => {
   const { id } = useParams<{ id?: string }>();
 
   useEffect(() => {
-    axios
-      .get<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((response) => {
-        const post = response.data;
-        return axios
-          .get<User>(
-            `https://jsonplaceholder.typicode.com/users/${post.userId}`
-          )
-          .then((response) => {
-            setPost({ ...post, user: response.data });
-          });
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const postResponse = await fetch(
+          `https://jsonplaceholder.typicode.com/posts/${id}`
+        );
+        if (!postResponse.ok) {
+          throw new Error("Failed to fetch post");
+        }
+        const postData: Post = await postResponse.json();
+
+        const userResponse = await fetch(
+          `https://jsonplaceholder.typicode.com/users/${postData.userId}`
+        );
+        if (!userResponse.ok) {
+          throw new Error("Failed to fetch user");
+        }
+        const userData: User = await userResponse.json();
+
+        setPost({ ...postData, user: userData });
+      } catch (error) {
         console.error("Error fetching data: ", error);
-      });
+      }
+    };
+
+    if (id) {
+      fetchData();
+    }
   }, [id]);
 
   if (!post) return null;
@@ -55,9 +66,9 @@ const Post: React.FC = () => {
           style={{ color: "#ccdb94", paddingLeft: ".5rem" }}
         />{" "}
       </Link>
-      <h2>{post.title}</h2>
-      <p>By {post.user?.name}</p>
-      <p>{post.body}</p>
+      <h2 data-testid="post-title">{post.title}</h2>
+      <p data-testid="user-name">By {post.user?.name}</p>
+      <p data-testid="post-body">{post.body}</p>
       <Comments postId={post.id} />
     </>
   );

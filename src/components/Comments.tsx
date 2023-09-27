@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Logger from "../utils/Logger";
 
 interface Comment {
@@ -17,15 +16,17 @@ interface CommentsProps {
 const Comments: React.FC<CommentsProps> = ({ postId }) => {
   const [comments, setComments] = useState<Comment[]>([]);
 
-  // console.log(comments);
-
   useEffect(() => {
-    axios
-      .get<Comment[]>(
-        `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
-      )
+    // Use the Fetch API to make the GET request
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
       .then((response) => {
-        setComments(response.data);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data: Comment[]) => {
+        setComments(data);
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);

@@ -1,6 +1,5 @@
 // Posts.tsx
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logger from "../utils/Logger";
 
@@ -20,39 +19,59 @@ interface Post {
 const Posts: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    const fetchUsersAndPosts = async () => {
+      try {
+        const usersResponse = await fetch(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        if (!usersResponse.ok) {
+          throw new Error("Failed to fetch users");
+        }
+        const users: User[] = await usersResponse.json();
+
+        const postsResponse = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        if (!postsResponse.ok) {
+          throw new Error("Failed to fetch posts");
+        }
+        const posts: Post[] = await postsResponse.json();
+
+        const postsWithUser = posts.map((post) => ({
+          ...post,
+          user: users.find((user) => user.id === post.userId),
+        }));
+
+        setUsers(users);
+        setPosts(postsWithUser);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchUsersAndPosts();
+  }, []);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (searchQuery === "") {
       alert("Please enter a valid name!");
+      return;
     }
-    if (searchQuery) {
-      axios
-        .get<User[]>("https://jsonplaceholder.typicode.com/users")
-        .then((response) => {
-          const users = response.data.filter((user) =>
-            user.name.toLowerCase().includes(searchQuery.toLowerCase())
-          );
-          if (users.length === 0) {
-            alert("Sorry, no users found. Try again.");
-          }
-          const postsPromises = users.map((user) =>
-            axios
-              .get<Post[]>(
-                `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`
-              )
-              .then((response) =>
-                response.data.map((post) => ({ ...post, user }))
-              )
-          );
-          return Promise.all(postsPromises);
-        })
-        .then((postsArrays) => {
-          setPosts(postsArrays.flat());
-        });
-    } else {
-      setPosts([]);
+
+    const filteredPosts = posts.filter((post) =>
+      post.user?.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (filteredPosts.length === 0) {
+      alert("Sorry, no posts found. Try again.");
+      return;
     }
+
+    setPosts(filteredPosts);
   };
 
   return (
@@ -65,6 +84,7 @@ const Posts: React.FC = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           id="kutu"
+          data-testid="search-form"
         />
       </form>
 
