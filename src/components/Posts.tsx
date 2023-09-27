@@ -1,7 +1,7 @@
-// Posts.tsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logger from "../utils/Logger";
+import Header from "./Header";
 
 interface User {
   id: number;
@@ -76,6 +76,7 @@ const Posts: React.FC = () => {
 
   return (
     <div style={{ maxHeight: "95vh" }}>
+      <Header />
       <Logger message="Posts" />
       <form onSubmit={handleSubmit}>
         <input

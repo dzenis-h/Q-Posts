@@ -1,9 +1,12 @@
 // App.tsx
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import "./App.css";
+
 import Posts from "./components/Posts";
 import Post from "./components/Post";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import About from "./components/About";
 
 const App: React.FC = (props) => {
   return (
@@ -12,6 +15,7 @@ const App: React.FC = (props) => {
         <Switch>
           <Route exact path="/" component={Posts} />
           <Route path="/posts/:id" component={Post} />
+          <Route path="/about" component={About} />
         </Switch>
       </div>
     </Router>
@@ -19,4 +23,3 @@ const App: React.FC = (props) => {
 };
 
 export default App;
-

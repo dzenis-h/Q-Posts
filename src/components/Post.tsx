@@ -63,7 +63,7 @@ const Post: React.FC = () => {
         <FontAwesomeIcon
           icon={faArrowLeft}
           beatFade
-          style={{ color: "#ccdb94", paddingLeft: ".5rem" }}
+          style={{ color: "#00ff16", paddingLeft: ".5rem" }}
         />{" "}
       </Link>
       <h2 data-testid="post-title">{post.title}</h2>
