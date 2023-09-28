@@ -23,9 +23,7 @@ Contributions are always welcome! If you would like to contribute to this projec
 3. Make your changes and test them thoroughly. 👨‍💻
 4. Submit a pull request. ✔
 
-## 🚀 Deployment
-
-The application is deployed on [Platform Name](https://deployment-link.com). You can check it out [here](https://deployment-link.com).
+#
 
 ## 📑 License
 
@@ -36,5 +34,7 @@ This project is licensed under the terms of the MIT license. You can check out t
 This repo was created by [Dzenis H.](https://dzenis.tech)
 
 Contributions are more than welcome. 🫡
+ 
 It took me around 5 hours to complete this task.  ⏰
+ 
 If you like what you see, please consider giving a ⭐️
