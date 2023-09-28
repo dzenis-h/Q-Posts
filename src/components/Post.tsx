@@ -10,7 +10,7 @@ interface User {
   id: number;
   name: string;
 }
-
+// eslint-disable-next-line
 interface Post {
   userId: number;
   id: number;

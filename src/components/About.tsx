@@ -27,7 +27,7 @@ const Header: React.FC = () => {
             💚
           </span>{" "}
           by{" "}
-          <a href="https://dzenis.tech" target="_blank">
+          <a href="https://dzenis.tech" target="_blank" rel="noreferrer">
             Dženis H.
           </a>
         </p>
