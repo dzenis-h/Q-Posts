@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# 💬 Q Posts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![App Screenshot](https://drive.google.com/uc?export=view&id=1z7FIMrdLptjroq1_-DoT6f5V2L9hCau3)
 
-## Available Scripts
+## 👀 Overview
 
-In the project directory, you can run:
+Q Posts is an application that fetches users' data and their posts, with an additional section for comments. It was developed with the goal of assisting with a job application, showcasing the ability to follow directions and deliver functional solutions. While it may not be the creator's magnum opus, it serves its purpose diligently and effectively.
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+| Tech | Docs | Description |
+| :---: | :---: | :--- |
+| ![TypeScript](https://img.shields.io/badge/-TypeScript-blue) | [TypeScript] | TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. |
+| ![CSS](https://img.shields.io/badge/-CSS-blue) | [CSS] | CSS (Cascading Style Sheets) is used to style and layout web pages — for example, to alter the font, color, size, and spacing of your content, split it into multiple columns, or add animations and other decorative features. |
+| ![JavaScript](https://img.shields.io/badge/-JavaScript-blue) | [JavaScript] | JavaScript (JS) is a lightweight interpreted or just-in-time compiled programming language with first-class functions. |
+| ![HTML](https://img.shields.io/badge/-HTML-blue) | [HTML] | HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and structure of web content. |
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📝 Contributing
 
-### `npm test`
+Contributions are always welcome! If you would like to contribute to this project, please follow these steps:
+1. Fork the repository. 🍴
+2. Create a new branch. 🌵
+3. Make your changes and test them thoroughly. 👨‍💻
+4. Submit a pull request. ✔
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Deployment
 
-### `npm run build`
+The application is deployed on [Platform Name](https://deployment-link.com). You can check it out [here](https://deployment-link.com).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📑 License
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project is licensed under the terms of the MIT license. You can check out the full license [here](https://docs.google.com/document/d/11WK7tVoTFRMcWCuGZQCRWxEsDUEJ_6ArtfV-NjWcBCU/edit?usp=sharing).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 👨🏻‍💻 Credits
 
-### `npm run eject`
+This repo was created by [Dzenis H.](https://dzenis.tech)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are more than welcome. 🫡
+It took me around 5 hours to complete this task.  ⏰
+If you like what you see, please consider giving a ⭐️
