@@ -1,7 +1,5 @@
 # 💬 Q Posts
 
-![App Screenshot](https://drive.google.com/uc?export=view&id=1z7FIMrdLptjroq1_-DoT6f5V2L9hCau3)
-
 ## 👀 Overview
 
 Q Posts is an application that fetches users' data and their posts, with an additional section for comments. It was developed with the goal of assisting with a job application, showcasing the ability to follow directions and deliver functional solutions. While it may not be the creator's magnum opus, it serves its purpose diligently and effectively.
@@ -38,3 +36,5 @@ Contributions are more than welcome. 🫡
 It took me around 5 hours to complete this task.  ⏰
  
 If you like what you see, please consider giving a ⭐️
+
+![App Screenshot](https://drive.google.com/uc?export=view&id=1z7FIMrdLptjroq1_-DoT6f5V2L9hCau3)
